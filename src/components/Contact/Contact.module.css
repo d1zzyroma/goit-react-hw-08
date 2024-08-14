@@ -1,0 +1,37 @@
+.column{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+}
+
+.row{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.rowCenter{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 70px;
+    border: 1px solid black;
+    max-width: 400px;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.btn{
+    width: 100px;
+    height: 40px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.text{
+    font-size: 24px;
+    font-weight: 800px;
+    margin: 0;
+}
