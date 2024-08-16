@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import man from "./man.svg";
 import phone from "./phone.svg";
 import css from "./Contact.module.css";
-import { deleteContactsThunk } from "../../redux/contactsOps";
+import { deleteContactsThunk } from "../../redux/contacts/contactsOps";
 
 const Contact = ({ name, phoneNumber, id }) => {
   const dispatch = useDispatch();

@@ -1,54 +1,34 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactForm from "./components/ContactForm/ContactForm";
+// import { useSelector, useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import ContactList from "./components/ContactList/ContactList";
+// import SearchBox from "./components/SearchBox/SearchBox";
+// import ContactForm from "./components/ContactForm/ContactForm";
 import css from "./App.module.css";
 
-import { addContactThunk, deleteContactsThunk, fetchContacts } from './redux/contactsOps';
-import { setFilter } from './redux/contactsSlice';
+
+import { Route, Routes } from 'react-router-dom';
+import NotFound from "./pages/NotFound/NotFound";
+import Login from "./pages/Login/Login";
+import Home from './pages/Home/Home';
+import LayoutComp from "./components/LayoutComp/LayoutComp";
+import Register from "./pages/Register/Register";
+import Contacts from "./pages/Contacts/Contacts";
+
 
 function App() {
-  const contacts = useSelector((state) => state.contacts.items);
-  const filter = useSelector((state) => state.contacts.filter);
-  const isLoading = useSelector((state) => state.contacts.isLoading);
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());  // Використання правильного імені операції
-  }, [dispatch]);
-
-  const handleAddContact = (newContact) => {
-    dispatch(addContactThunk(newContact));
-  };
-
-  const handleDeleteContact = (id) => {
-    dispatch(deleteContactsThunk(id));
-  };
-
-  const handleSetFilter = (value) => {
-    dispatch(setFilter(value));
-  };
-
-  const filteredValues = () => {
-    return contacts.filter(contact => 
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  };
 
   return (
     <div className={css.container}>
-      <h1>Phonebook</h1>
-      {isLoading && <h1>LOADING......</h1>}
-      <ContactForm addContact={handleAddContact} />
-      <SearchBox 
-        inputValue={filter} 
-        setInputValue={handleSetFilter} 
-      />
-      <ContactList 
-        contactData={filteredValues()} 
-        deleteContact={handleDeleteContact} 
-      />
+      <Routes>
+        <Route path="/" element={<LayoutComp />}>
+          <Route index element={<Home />} />
+          <Route path="contacts" element={<Contacts />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </div>
   );
 }
