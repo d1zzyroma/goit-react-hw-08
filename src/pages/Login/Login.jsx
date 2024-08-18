@@ -2,7 +2,7 @@ import { Field, Form, Formik } from "formik";
 import css from "./Login.module.css"
 import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { loginThunk } from "../../redux/auth/authOps";
+import { loginThunk } from "../../redux/auth/operations";
 import { selectIsLoggeIn } from "../../redux/auth/selectors";
 import { Button } from "@mui/material";
 const Login = () => {

@@ -1,8 +1,4 @@
-// import { useSelector, useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import ContactList from "./components/ContactList/ContactList";
-// import SearchBox from "./components/SearchBox/SearchBox";
-// import ContactForm from "./components/ContactForm/ContactForm";
+
 import css from "./App.module.css";
 
 
@@ -15,10 +11,11 @@ import Register from "./pages/Register/Register";
 import Contacts from "./pages/Contacts/Contacts";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { getMeThunk } from "./redux/auth/authOps";
+
 import PrivateRoute from "./Routes/PrivateRoute";
 import PublicRoute from "./Routes/PublicRoute";
 import { Toaster } from "react-hot-toast";
+import { getMeThunk } from "./redux/auth/operations";
 
 
 function App() {

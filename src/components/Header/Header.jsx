@@ -5,7 +5,8 @@ import clsx from 'clsx';
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggeIn, selectsUser } from "../../redux/auth/selectors";
 import { Button, Link as MUILink } from '@mui/material';
-import { logoutThunk } from "../../redux/auth/authOps";
+import { logoutThunk } from "../../redux/auth/operations";
+
 
 const Header = () => {
     const user = useSelector(selectsUser);
