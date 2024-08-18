@@ -13,20 +13,44 @@ import Home from './pages/Home/Home';
 import LayoutComp from "./components/LayoutComp/LayoutComp";
 import Register from "./pages/Register/Register";
 import Contacts from "./pages/Contacts/Contacts";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getMeThunk } from "./redux/auth/authOps";
+import PrivateRoute from "./Routes/PrivateRoute";
+import PublicRoute from "./Routes/PublicRoute";
+import { Toaster } from "react-hot-toast";
 
 
 function App() {
-
+  const dispatch = useDispatch();
+  useEffect(()=>{
+    dispatch(getMeThunk())
+  },[dispatch])
 
   return (
+    
     <div className={css.container}>
+      <Toaster   
+      position="top-right"
+      reverseOrder={true}/>
       <Routes>
         <Route path="/" element={<LayoutComp />}>
           <Route index element={<Home />} />
-          <Route path="contacts" element={<Contacts />} />
+          <Route path="contacts" element={
+            <PrivateRoute>
+              <Contacts />
+            </PrivateRoute>} />
         </Route>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route path="login" element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+          } />
+        <Route path="register" element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+          } />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

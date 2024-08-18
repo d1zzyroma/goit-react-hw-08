@@ -3,6 +3,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import css from "./ContactForm.module.css";
 import { addContactThunk } from "../../redux/contacts/contactsOps";
+import toast from "react-hot-toast";
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -20,6 +21,7 @@ const ContactForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addContactThunk({ name: values.username, number: values.phone }));
+    toast.success('Successfully added!')
     resetForm();
   };
 

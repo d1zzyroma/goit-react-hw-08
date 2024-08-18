@@ -2,6 +2,7 @@
     background-color: darkgrey;
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -14,12 +15,11 @@
 }
 
 .listItem{
-font-size: 24px;
+    font-size: 20px;
+    color: #000;
 }
 
-.active{
-    color: white;
-}
+
 
 .btn{
     width: 100px;
@@ -28,4 +28,15 @@ font-size: 24px;
     border: none;
     cursor: pointer;
     background-color: white;
+}
+
+
+
+.link:hover {
+    text-decoration: underline; 
+}
+
+.active {
+    font-weight: bold; 
+    color: white; 
 }

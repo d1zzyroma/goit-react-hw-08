@@ -13,6 +13,7 @@ const ContactList = () => {
   };
 
   return (
+    
     <ul className={css.list}>
       {visibleContacts.map((element) => (
         <li key={element.id} className={css.listItem}>

@@ -4,6 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../../redux/auth/authOps";
 import { selectIsLoggeIn } from "../../redux/auth/selectors";
+import { Button } from "@mui/material";
 const Login = () => {
     const isLoggeIn = useSelector(selectIsLoggeIn);
     const dispatch = useDispatch();
@@ -17,10 +18,16 @@ const Login = () => {
         options.resetForm();
     }
     if(isLoggeIn){
-        return <Navigate to="/" />;
+        return <Navigate to="/contacts" />;
     }
     return(
-        <>  
+        <>
+        <Link to='/'>
+            <Button variant="contained" color="primary" >
+                Home
+            </Button>
+        </Link>
+        
         <h2 className={css.title}>Please Log In</h2>
             <Formik initialValues={intialValues} onSubmit={handleSubmit}>
                 

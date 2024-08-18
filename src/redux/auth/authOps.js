@@ -39,10 +39,16 @@ export const logoutThunk = createAsyncThunk("logout", async(credentials, thunkAP
 })
 
 
-// export const getMe = createAsyncThunk("getMe", async(credentials, thunkAPI) => {
-//     try{
-//         const { data } = await apiContacts.get("/users/current")
-//     }catch(e){
-//         return thunkAPI.rejectWithValue(e.message);
-//     }
-// })
+export const getMeThunk = createAsyncThunk("getMe", async(credentials, thunkAPI) => {
+    const savedToken = thunkAPI.getState().auth.token;
+    if(savedToken === null){
+        return thunkAPI.rejectWithValue("Token is not correct")
+    }
+    try{
+        setToken(savedToken)
+        const { data } = await apiContacts.get("/users/current");
+        return data;
+    }catch(e){
+        return thunkAPI.rejectWithValue(e.message);
+    }
+})

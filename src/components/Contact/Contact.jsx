@@ -3,16 +3,19 @@ import man from "./man.svg";
 import phone from "./phone.svg";
 import css from "./Contact.module.css";
 import { deleteContactsThunk } from "../../redux/contacts/contactsOps";
+import toast from "react-hot-toast";
 
 const Contact = ({ name, phoneNumber, id }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
     dispatch(deleteContactsThunk(id));
+    toast.success('Successfully deleted!')
   };
 
   return (
     <div>
+      
       <div className={css.rowCenter}>
         <div className={css.column}>
           <div className={css.row}>
