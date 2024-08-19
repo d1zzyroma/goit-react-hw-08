@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from "./pages/NotFound/NotFound";
 import Login from "./pages/Login/Login";
 import Home from './pages/Home/Home';
-import LayoutComp from "./components/LayoutComp/LayoutComp";
+import LayoutComp from "./components/Layout/Layout";
 import Register from "./pages/Register/Register";
 import Contacts from "./pages/Contacts/Contacts";
 import { useDispatch } from "react-redux";
