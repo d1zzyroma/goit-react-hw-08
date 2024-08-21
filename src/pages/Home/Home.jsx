@@ -1,16 +1,16 @@
 import {  useSelector } from "react-redux";
 import HomeTitle from "../../components/HomeTitle/HomeTitle";
-import { selectIsLoggeIn } from "../../redux/auth/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 
 const Home = () => {
     
-    const isLoggeIn = useSelector(selectIsLoggeIn)
+    const isLoggedIn = useSelector(selectIsLoggedIn)
     return(
         <div>
-            {isLoggeIn && (
+            {isLoggedIn && (
                 <h2>Hello, you are in system</h2>
             )}
-            {!isLoggeIn && (
+            {!isLoggedIn && (
                 <HomeTitle/>
             )}
             

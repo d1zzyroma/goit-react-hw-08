@@ -3,10 +3,10 @@ import css from "./LoginForm.module.css"
 import { Link, Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loginThunk } from "../../redux/auth/operations";
-import { selectIsLoggeIn } from "../../redux/auth/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { Button } from "@mui/material";
 const LoginForm = () => {
-    const isLoggeIn = useSelector(selectIsLoggeIn);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
     const dispatch = useDispatch();
     const intialValues= {
         email: "",
@@ -17,7 +17,7 @@ const LoginForm = () => {
         dispatch(loginThunk(values))
         options.resetForm();
     }
-    if(isLoggeIn){
+    if(isLoggedIn){
         return <Navigate to="/contacts" />;
     }
     return(

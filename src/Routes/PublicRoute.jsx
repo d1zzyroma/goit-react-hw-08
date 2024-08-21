@@ -1,11 +1,11 @@
 import { useSelector } from "react-redux"
-import { selectIsLoggeIn } from "../redux/auth/selectors"
+import { selectIsLoggedIn } from "../redux/auth/selectors"
 import { Navigate, useLocation} from "react-router-dom";
 
 export const PublicRoute = ({children}) => {
-    const isLoggeIn = useSelector(selectIsLoggeIn);
+    const isLoggedIn = useSelector(selectIsLoggedIn);
     const location = useLocation()
-    if(isLoggeIn){
+    if(isLoggedIn){
         return <Navigate to={location.state ?? "/"} />
     }
     return children;

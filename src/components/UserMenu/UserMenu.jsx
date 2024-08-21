@@ -1,24 +1,22 @@
-import { NavLink } from "react-router-dom";
-import { Button, Link as MUILink } from '@mui/material';
-import css from "./UserMenu.module.css";
+import { Button, Typography } from '@mui/material';
+import { useDispatch, useSelector } from "react-redux";
 import { logoutThunk } from "../../redux/auth/operations";
-import { useDispatch } from "react-redux";
+import { selectUser } from "../../redux/auth/selectors"; 
+import css from "./UserMenu.module.css";
 
 export const UserMenu = () => {
     const dispatch = useDispatch();
+    const user = useSelector(selectUser); 
+
     return (
-        <>
-            <li className={css.listItem}>
-                <MUILink component={NavLink} to="/contacts"  >
-                    Contacts
-                </MUILink>
-            </li>
-            <li>
-                <Button variant="contained" color="primary" onClick={() => dispatch(logoutThunk())}>
-                    Exit
-                </Button>
-            </li>
-        </>
+        <div className={css.userMenu}>
+            <Typography variant="h6" component="p">
+                Welcome, {user.name}!
+            </Typography>
+            <Button variant="contained" color="primary" onClick={() => dispatch(logoutThunk())}>
+                Exit
+            </Button>
+        </div>
     );
 }
 

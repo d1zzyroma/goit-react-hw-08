@@ -40,3 +40,8 @@
     font-weight: bold; 
     color: white; 
 }
+
+.userMenu{
+    display: flex;
+    gap: 20px;
+}

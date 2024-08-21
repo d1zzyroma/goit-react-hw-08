@@ -3,11 +3,11 @@ import css from "./RegistrationForm.module.css"
 import { Link, Navigate} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerThunk } from "../../redux/auth/operations.js";
-import { selectIsLoggeIn } from "../../redux/auth/selectors";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
 import { Button } from "@mui/material";
 const RegistrationForm = () => {
     const dispatch = useDispatch();
-    const isLoggeIn = useSelector(selectIsLoggeIn);
+    const isLoggeIn = useSelector(selectIsLoggedIn);
     const intialValues= {
         name: "",
         email: "",
